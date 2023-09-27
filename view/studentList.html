@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Listagem de alunos IMDAZ</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="titulo">Listagem de alunos IMDAZ</h1>
+    <a href="http://localhost:3000/student-register">Novo aluno</a>
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Gênero</th>
+          <th>Data de nascimento</th>
+          <th>Telefone</th>
+          <th>Ano escolar</th>
+          <th>Tempo no IMDZ</th>
+          <th>Informações adicionais</th>
+          <th>Informações da mãe</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range . }}
+        <tr>
+          <td>{{ .Name }}</td>
+          <td>{{ .Gender }}</td>
+          <td>{{ .BirthDate }}</td>
+          <td>{{ .Phone }}</td>
+          <td>{{ .ClassYear }}</td>
+          <td>{{.TimeImdz }} Anos</td>
+          <td><a href="/student/{{ .ID }}/aditional-info">Ver</a></td>
+          <td><a href="/student/{{ .ID }}/mother-info">Ver</a></td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </div>
+</body>
+<style>
+  body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 25px;
+}
+
+.titulo {
+  font-size: 2em;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+th {
+  background-color: #000;
+  color: #fff;
+}
+
+.genero {
+  width: 100px;
+}
+
+.ano-escolar {
+  width: 100px;
+}
+
+.tempo-imdz {
+  width: 100px;
+}
+
+</style>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de informações adicionais do estudante</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="titulo">Informações adicionais do estudante</h1>
+    <form action="http://localhost:3000/student/{{ .StudentId }}/aditional-info" method="post">
+      <div class="campo">
+        <label for="income">Renda familiar:</label>
+        <input value="{{ .Income }}" type="number" name="income" id="income" required>
+      </div>
+      <div class="campo">
+        <label for="responsableName">Nome do responsável:</label>
+        <input type="text" value="{{ .ResponsableName }}" name="responsableName" id="responsableName" required>
+      </div>
+      <div class="campo">
+        <label for="nisNumber">Número do NIS:</label>
+        <input type="text" value="{{ .NisNumber }}" name="nisNumber" id="nisNumber">
+      </div>
+      <div class="campo-check">
+        <label for="imageRight">Autoriza o uso da imagem:</label>
+        {{if .ImageRight}}
+        <input type="checkbox" checked=false name="imageRight" id="imageRight">
+        {{else}}
+        <input type="checkbox"  name="imageRight" id="imageRight">
+        {{end}}
+      </div>
+      <div class="campo-check">
+        <label for="governmentBenefit">Recebe algum benefício governamental:</label>
+        {{if .GovernmentBenefit}}
+        <input type="checkbox" checked name="governmentBenefit" id="governmentBenefit">
+        {{else}}
+        <input type="checkbox"  name="governmentBenefit" id="governmentBenefit">
+        {{end}}
+      </div>
+      <div class="campo-check">
+        
+        <label for="hasBrother">Tem irmão(s) matriculado(s) na escola:</label>
+        {{if .HasBrother}}
+        <input type="checkbox" checked name="hasBrother" id="hasBrother">
+        {{else}}
+        <input type="checkbox"  name="hasBrother" id="hasBrother">
+        {{end}}
+      </div>
+      <div class="campo">
+        <input type="submit" value="Salvar">
+      </div>
+    </form>
+    <a href="/">
+      <button>Voltar</button>
+     </a>
+  </div>
+</body>
+<style>
+  body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.titulo {
+  font-size: 2em;
+  text-align: center;
+}
+
+.campo {
+  margin-bottom: 20px;
+}
+.campo-check {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+label {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+select {
+  width: 100px;
+}
+
+input[type="submit"] {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+</style>
+</html>

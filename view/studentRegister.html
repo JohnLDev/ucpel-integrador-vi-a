@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de alunos</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="titulo">Cadastro de alunos</h1>
+    <form action="http://localhost:3000/student" method="post">
+      <div class="campo">
+        <label for="nome">Nome:</label>
+        <input type="text" name="name" id="nome" required>
+      </div>
+      <div class="campo">
+        <label for="gender">Gênero:</label>
+        <select name="gender" id="genero">
+          <option value="masculino">Masculino</option>
+          <option value="feminino">Feminino</option>
+          <option value="nao-binario">Não binário</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="birthDate">Data de nascimento:</label>
+        <input type="date" name="birthDate" id="data_nascimento" required>
+      </div>
+      <div class="campo">
+        <label for="phone">Telefone:</label>
+        <input type="tel" name="phone" id="telefone" required>
+      </div>
+      <div class="campo">
+        <label for="classYear">Ano escolar:</label>
+        <input type="number" name="classYear" id="ano_escolar" required>
+      </div>
+      <div class="campo">
+        <label for="timeImdz">Tempo no IMDZ:</label>
+        <input type="number" name="timeImdz" id="tempo_imdz" required>
+      </div>
+      <div class="campo">
+        <input type="submit" value="Cadastrar">
+      </div>
+    </form>
+  </div>
+</body>
+
+
+<style>
+  body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.titulo {
+  font-size: 2em;
+  text-align: center;
+}
+
+.campo {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+</style>
+</html>

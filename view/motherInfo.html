@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de dados da mãe</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="titulo">Dados da mãe</h1>
+    <form action="http://localhost:3000/student/{{ .StudentId }}/mother-info" method="post">
+     
+      <div class="campo">
+        <label for="authorizedPeople">Pessoas autorizadas a buscar o estudante:</label>
+        <input type="text" value="{{ .AuthorizedPeople }}"  name="authorizedPeople" id="authorizedPeople" required>
+      </div>
+      <div class="campo">
+        <label for="helperName">Nome do ajudante(Se possuir):</label>
+        <input type="text" value="{{ .HelperName }}"  name="helperName" id="helperName">
+      </div>
+      <div class="campo">
+        <label for="projectName">Nome do projeto(Se participar):</label>
+        <input type="text" value="{{ .ProjectName }}" name="projectName" id="projectName">
+      </div>
+
+      <div class="campo-check">
+        <label for="workOutside">Trabalha fora:</label>
+        {{if .WorkOutside}}
+        <input type="checkbox" checked name="workOutside" id="workOutside">
+        {{else}}
+        <input type="checkbox"  name="workOutside" id="workOutside">
+        {{end}}
+      </div>
+      <div class="campo-check">
+        <label for="receiveBenefit">Recebe algum benefício:</label>
+        {{if .ReceiveBenefit}}
+        <input type="checkbox" checked name="receiveBenefit" id="receiveBenefit">
+        {{else}}
+        <input type="checkbox"  name="receiveBenefit" id="receiveBenefit">
+        {{end}}
+      </div>
+      <div class="campo">
+        <input type="submit" value="Salvar">
+      </div>
+    </form>
+    <a href="/">
+      <button>Voltar</button>
+     </a>
+  </div>
+</body>
+<style>
+  body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.titulo {
+  font-size: 2em;
+  text-align: center;
+}
+
+.campo {
+  margin-bottom: 20px;
+}
+
+.campo-check {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+label {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+select {
+  width: 100px;
+}
+
+input[type="submit"] {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+</style>
+</html>
