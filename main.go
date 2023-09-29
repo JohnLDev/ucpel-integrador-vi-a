@@ -9,11 +9,14 @@ import (
 
 func main() {
 
+	// Realiza conexão com banco de dados
 	conn, err := gorm.Open(sqlite.Open("db.sqlite"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
 
+	// Cria tabelas no banco de dados
 	conn.AutoMigrate(&model.Student{}, &model.AditionalInfo{}, &model.MotherInfo{})
+	// Inicia servidor HTTP
 	controller.StartHttpServer(conn)
 }

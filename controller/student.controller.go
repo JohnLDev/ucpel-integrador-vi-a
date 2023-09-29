@@ -27,12 +27,15 @@ func StartHttpServer(db *gorm.DB) {
 		}
 	}
 
+	// Rota para página inicial
 	r.Get("/", fillUserList)
 
+	// Rota para página de cadastro de estudante
 	r.Get("/student-register", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "view/studentRegister.html")
 	})
 
+	// Rota POST para receber os dados de cadastro de estudante
 	r.Post("/student", func(w http.ResponseWriter, r *http.Request) {
 		err := r.ParseForm()
 		if err != nil {
@@ -54,6 +57,7 @@ func StartHttpServer(db *gorm.DB) {
 		fillUserList(w, r)
 	})
 
+	// Rota para página de cadastro/edição dos dados da mãe
 	r.Get("/student/{id}/mother-info", func(w http.ResponseWriter, r *http.Request) {
 		var motherInfo model.MotherInfo
 		id, _ := strconv.ParseInt(chi.URLParam(r, "id"), 10, 64)
@@ -70,6 +74,7 @@ func StartHttpServer(db *gorm.DB) {
 		}
 	})
 
+	// Rota POST para receber os dados de cadastro/edição dos dados da mãe
 	r.Post("/student/{id}/mother-info", func(w http.ResponseWriter, r *http.Request) {
 		err := r.ParseForm()
 		if err != nil {
@@ -121,6 +126,7 @@ func StartHttpServer(db *gorm.DB) {
 		}
 	})
 
+	// Rota para página de cadastro/edição dos dados adicionais
 	r.Get("/student/{id}/aditional-info", func(w http.ResponseWriter, r *http.Request) {
 		var aditionalInfo model.AditionalInfo
 		id, _ := strconv.ParseInt(chi.URLParam(r, "id"), 10, 64)
@@ -137,6 +143,7 @@ func StartHttpServer(db *gorm.DB) {
 		}
 	})
 
+	// Rota POST para receber os dados de cadastro/edição dos dados adicionais
 	r.Post("/student/{id}/aditional-info", func(w http.ResponseWriter, r *http.Request) {
 		err := r.ParseForm()
 		if err != nil {
@@ -194,5 +201,6 @@ func StartHttpServer(db *gorm.DB) {
 		}
 	})
 
+	// Inicia servidor HTTP na porta 3000
 	http.ListenAndServe(":3000", r)
 }
